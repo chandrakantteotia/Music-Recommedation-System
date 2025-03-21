@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 🎵Music Recommendations System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+    <div class="heading-container">
+        <h1 class="heading"></h1>
+    </div>
+    
+
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="/static/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="close-btn" onclick="closePopup()">&times;</span>
+            <h2>Connect with us on Instagram</h2>
+            <p>Follow us for updates and more content!</p>
+            <a id="instagramLink" href="https://www.instagram.com/chandrakant_teotia" target="_blank">Visit Instagram</a>
+        </div>
+    </div>
+    
+    <audio id="popupSound" src="/static/pop.mp3"></audio>
+    <audio id="instagramSound" src="/static/welcome.mp3"></audio>
+
+    <div class="container">
+        <div class="search-box">
+            <input type="text" id="songInput" required placeholder="Enter a song name...">
+            <button style="background-color: #7d6b57;" onclick="searchSong()">Search</button>
+        </div>
+
+        <div id="loading" style="display: none; color: white;"> Searching......</div>
+
+      
+        <div class="player-container">
+            <iframe id="youtubePlayer" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div id="songDetails"></div>
+        
+        <h2 style="margin-top: 20px;">Recommended Songs</h2>
+        <div class="results" id="recommendations">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

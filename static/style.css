@@ -187,6 +187,8 @@ button:hover {
 /* Preloader Styling */
 #preloader {
     position: fixed;
+    top: 0%;
+    left: 0%;
     width: 100%;
     height: 100%;
     background: #000;
@@ -223,3 +225,14 @@ button:hover {
     
 }
 
+@media (max-width: 768px) {
+    .player-container {
+        width: 98%; /* Adjust to fit smaller screens */
+        max-width: 103%;
+    }
+    .result-item {
+        height: 300px;
+        width: 260px;
+        
+    }
+}

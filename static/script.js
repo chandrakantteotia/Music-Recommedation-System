@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 function searchSong() {
-    let query = document.getElementById("songInput").value;
+    let query = document.getElementById("songInput").value.trim();
+    //  query.value.trim();
     let player = document.getElementById("youtubePlayer");
     let loading = document.getElementById("loading");
     let recommendationsContainer = document.getElementById("recommendations");
@@ -121,7 +122,7 @@ function searchSongFromRecommendation(songTitle) {
 }
 
 const text = "Music Recommendation System";
-const speed = 100; 
+const speed = 100;
 const heading = document.querySelector(".heading");
 
 let index = 0;
@@ -132,7 +133,7 @@ function typeText() {
         index++;
         setTimeout(typeText, speed);
     } else {
-        heading.style.borderRight = "none"; 
+        heading.style.borderRight = "none";
         speakText(text);
     }
 }
@@ -179,7 +180,7 @@ function openPopup() {
 }
 
 document.getElementById("instagramLink").addEventListener("click", function (event) {
-    event.preventDefault(); 
+    event.preventDefault();
     let audio = document.getElementById("instagramSound");
 
     if (audio) {
@@ -204,7 +205,7 @@ window.addEventListener("load", function () {
     preloader.style.opacity = "0";
     setTimeout(() => {
         preloader.style.display = "none";
-        content.style.display = "block"; 
-        document.body.style.overflow = "auto"; 
+        content.style.display = "block";
+        document.body.style.overflow = "auto";
     }, 500);
 });

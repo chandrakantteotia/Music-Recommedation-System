@@ -418,8 +418,11 @@ button {
 
 @media (max-width: 768px) {
     .player-container {
-        width: 98%; /* Adjust to fit smaller screens */
-        max-width: 103%;
+        /* width: 98%; /* Adjust to fit smaller screens */
+        /* max-width: 103%; */ 
+        width: 180%;
+        max-width: 115%;
+        margin-left: -25px;
     }
     .result-item {
         height: 300px;

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 🎵 Music Recommendations System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+    <div class="heading-container">
+        <h1 class="heading"></h1>
+    </div>
+    
+
+    <video autoplay loop muted playsinline id="bg-video">
+        <source src="/static/background.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close-btn" id="close-btn" onclick="closePopup()">&times;</span>
+           
+            <img style="height: 180px; width: 220px;" src="https://logospng.org/download/linkedin/logo-linkedin-4096.png" alt="">
+            <h2 style="font-size: 35px;    padding-bottom: 20px;">Connect with us on Linkedin</h2>
+            <p style="font-size: 25px;">Follow us for updates and more content!</p>
+            <a style="text-decoration: none; color: black; text-decoration: none;
+            color: black;
+            /* margin-top: 30px; */
+            padding-top: 0px;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 0px;
+            border: solid;
+            justify-content: space-evenly;
+            align-items: center;
+            display: flex;
+            align-content: center;
+            flex-wrap: wrap;
+            flex-direction: row;
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: 500;" id="instagramLink" href="https://www.linkedin.com/in/chandrakant-teotia/" target="_blank">Visit Linkedin</a>
+        </div>
+    </div>
+    
+    <audio id="popupSound" src="/static/pop.mp3"></audio>
+    <audio id="instagramSound" src="/static/welcome.mp3"></audio>
+
+    <div class="container">
+        <div class="search-box">
+            
+                <form id="songForm" style="display: flex;" method="POST" onsubmit="searchSong(); return false;">
+                    <input type="text" id="songInput"  placeholder="Enter a song name..." autocomplete="off">
+                    <!-- <button type="submit" style="background-color: #7d6b57;">Search</button> -->
+                    <button type="submit" >
+                        Search
+                        <div class="star-1">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xml:space="preserve"
+                            version="1.1"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                            viewBox="0 0 784.11 815.53"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <defs></defs>
+                            <g id="Layer_x0020_1">
+                              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                              <path
+                                class="fil0"
+                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                              ></path>
+                            </g>
+                          </svg>
+                        </div>
+                        <div class="star-2">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xml:space="preserve"
+                            version="1.1"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                            viewBox="0 0 784.11 815.53"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <defs></defs>
+                            <g id="Layer_x0020_1">
+                              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                              <path
+                                class="fil0"
+                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                              ></path>
+                            </g>
+                          </svg>
+                        </div>
+                        <div class="star-3">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xml:space="preserve"
+                            version="1.1"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                            viewBox="0 0 784.11 815.53"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <defs></defs>
+                            <g id="Layer_x0020_1">
+                              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                              <path
+                                class="fil0"
+                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                              ></path>
+                            </g>
+                          </svg>
+                        </div>
+                        <div class="star-4">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xml:space="preserve"
+                            version="1.1"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                            viewBox="0 0 784.11 815.53"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <defs></defs>
+                            <g id="Layer_x0020_1">
+                              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                              <path
+                                class="fil0"
+                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                              ></path>
+                            </g>
+                          </svg>
+                        </div>
+                        <div class="star-5">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xml:space="preserve"
+                            version="1.1"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                            viewBox="0 0 784.11 815.53"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <defs></defs>
+                            <g id="Layer_x0020_1">
+                              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                              <path
+                                class="fil0"
+                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                              ></path>
+                            </g>
+                          </svg>
+                        </div>
+                        <div class="star-6">
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xml:space="preserve"
+                            version="1.1"
+                            style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+                            viewBox="0 0 784.11 815.53"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <defs></defs>
+                            <g id="Layer_x0020_1">
+                              <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+                              <path
+                                class="fil0"
+                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
+                              ></path>
+                            </g>
+                          </svg>
+                        </div>
+                      </button>
+                      
+                </form>
+            
+            
+        </div>
+
+        <div id="loading" style="display: none; color: white; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;"> Searching......</div>
+
+      
+        <div class="player-container">
+            <iframe id="youtubePlayer" frameborder="0" allowfullscreen></iframe>
+        </div>
+
+        <div id="songDetails"></div>
+        
+        <h2 style="margin-top: 20px;">Recommended Songs</h2>
+        <div class="results" id="recommendations">
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+    <footer style="position: fixed; bottom: 0; left: 0%; width: 100%; text-align: center; padding: 10px;  backdrop-filter: blur(20px); color: white; font-family: 'Poppins', sans-serif;">
+        <p>Created by <a id="footer-name" style="color: aqua; text-decoration: none; text-transform: bold; " href="https://chandrakantteotia.github.io/portmy/?fbclid=PAZXh0bgNhZW0CMTEAAaZ1TPkse4BTM6tlvyzSOoHnfHoE5KuLpoGMg518KWh8ZdA2x22h9DOWNNg_aem_lHItFIQLXP62y9lQE7PkLA" target="_blank">Chandrakant</a></p>
+    </footer>
+
+</body>
+</html>

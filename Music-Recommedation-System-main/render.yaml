@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: music recommendation
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --chdir /opt/render/project/src"
+    plan: free
+    envVars:
+      - key: PORT
+        value: 10000
